@@ -7,6 +7,7 @@
     <li><a href="#code-structure-comments--formatting">Code Structure, Comments & Formatting</a></li>
     <li><a href="#functions--methods">Functions & Methods</a></li>
     <li><a href="#control-structures--errors">Control Structures & Errors</a></li>
+    <li><a href="#objects-classes--data-containers-structures">Objects, Classes & Data Containers/ Structures</a></li>
   </ol>
 </details>
 
@@ -391,6 +392,58 @@ if (!isEmail) {
 > **Benjamin James:** I just did a quick skim across the web and it looks like Error Handling is generally discouraged for control flow because it is often ~1000% slower depending on your implementation (even if you skip unwinding the stack), and introduces corner cases at very low levels of code that requires deep nesting to be handled correctly (and therefore reduces readability).
 >
 > It seems that this might be ok for high-level code with few performance restrictions, but should be avoided in low level code where performance is important (e.g. C has limited exception handling anyways)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Objects, Classes & Data Containers/ Structures
+
+- **The Difference Between Objects & Data Structures**
+
+|                        Object                        |             Data Container/ Data Structure              |
+| :--------------------------------------------------: | :-----------------------------------------------------: |
+| Private internals / properties, public API (methods) | Public internals/ properties, (almost) no API (methods) |
+|         Contain your business logic (in OOP)         |                Store and transport data                 |
+|            Abstractions over concretions             |                    Concretions only                     |
+
+- **The ability of an object to take on many forms**
+- **Classes Should Be Small**
+  - Single-Responsibility Principle (SRP)
+  - A Product class is responsible for product “issues” (e.g. change the product name)
+- **Cohesion**
+  - How much are your class methods using the class properties?
+
+![cohesion](diagrams/cohesion.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+![law-of-demeter](diagrams/law-of-demeter.png)
+
+- **Law Of Demeter**
+  - Code in a method may only access direct internals (properties and methods) of:
+    - the object it belongs to
+    - objects that are stored in properties of that object
+    - objects which are received as method parameters
+    - objects which are created in the method
+  - **Tell, Don’t Ask!**
+- **SOLID**
+  - Single Responsibility Principle
+    - Classes should have a single responsibility – a class shouldn’t change for more than one reason.
+  - Open-Closed Principle
+    - A class should be open for extension but closed for modification.
+  - Liskov Substitution Principle
+    - Objects should be replaceable with instances of their subclasses without altering the behavior.
+  - Interface Segregation Principle
+    - Many client-specific interfaces are better than one general purpose interface.
+  - Dependency Inversion Principle
+    - You should depend upon abstractions, not concretions.
 
 &nbsp;
 
