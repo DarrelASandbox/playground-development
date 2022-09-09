@@ -6,6 +6,7 @@
     <li><a href="#naming">Naming</a></li>
     <li><a href="#code-structure-comments--formatting">Code Structure, Comments & Formatting</a></li>
     <li><a href="#functions--methods">Functions & Methods</a></li>
+    <li><a href="#control-structures--errors">Control Structures & Errors</a></li>
   </ol>
 </details>
 
@@ -334,6 +335,62 @@ db.connectedClient.query();
 - **Can you easily test a function?**
   - Yes: Great!
   - No: Consider splitting it
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Control Structures & Errors
+
+- **Avoid Deep Nesting**
+  - Using Factory Functions & Polymorphism
+  - Utilize Errors
+- **Prefer Positive Checks** (`if isEmpty` vs `if isNotEmpty`)
+- **Use Guards & Fail Fast**
+
+![guards](diagrams/guards.png)
+
+- **Embrace Errors & Error Handling**
+  - Throwing + handling errors can replace if statements and lead to more focused functions
+  - Simple rule: If something is an error -> Make it an error
+  - Error Handling is “One Thing”!
+
+```js
+if (!isEmail) return {code: 422, message: ‘Invalid input’};
+
+/* ********************************************* */
+
+if (!isEmail) {
+  const error = new Error(‘Invalid input’);
+  error.code = 422;
+  throw error;
+}
+```
+
+&nbsp;
+
+---
+
+&nbsp;
+
+> **Stefano:** Try/catch approach & performances
+>
+> I see the benefits on the cleanliness of the code of the error throwing approach, but what about the performances?
+> Does this impact on them and how in javascript, since we are talking about it in this lesson?
+> Isn't it too costly compared with dealing with errors via if, maybe at the price of slightly less readable code?
+
+> **Maximilian:** I guess this is hard to answer in a general way for all programming languages since I really don't know it for all programming languages.
+>
+> For the languages I work with (mostly JavaScript, Python), I am not aware of considerable performance costs.
+> You might definitely find that throwing and handling errors is "slower" / more performance-intensive than using conditions.
+> BUT the question is if that really will have an impact.
+> Not using errors could be a micro-optimization which does not matter in the overall app but still comes with the downside of less readable code.
+
+> **Benjamin James:** I just did a quick skim across the web and it looks like Error Handling is generally discouraged for control flow because it is often ~1000% slower depending on your implementation (even if you skip unwinding the stack), and introduces corner cases at very low levels of code that requires deep nesting to be handled correctly (and therefore reduces readability).
+>
+> It seems that this might be ok for high-level code with few performance restrictions, but should be avoided in low level code where performance is important (e.g. C has limited exception handling anyways)
 
 &nbsp;
 
