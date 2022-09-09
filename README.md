@@ -4,6 +4,7 @@
     <li><a href="#about-the-project">About The Project</a></li>
     <li><a href="#introduction">Introduction</a></li>
     <li><a href="#naming">Naming</a></li>
+    <li><a href="#code-structure-comments--formatting">Code Structure, Comments & Formatting</a></li>
   </ol>
 </details>
 
@@ -194,6 +195,46 @@ db.connectedClient.query();
 > **Maximilian:** As so often, this in the end of course also comes down to personal preferences and conventions in your team (or often also for specific frameworks you might be working with).
 >
 > I personally typically prefer 1) since I would say that it conveys more meaning but if you're working with a framework technology where 2) is the convention, I would go with that.
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Code Structure, Comments & Formatting
+
+- **Bad Comment**
+  - Redundant Information
+  - Dividers / Block Markers
+  - Misleading Comments
+  - Commented-Out Code
+- **Good Comment**
+  - Legal Information
+  - Explanations which can’t be replaced by good naming
+  - Warnings
+  - Todo Notes
+  - Documentation Strings
+- **Code Formatting Improves Readability & Transports Meaning**
+  - **Vertical Formatting**
+    - Space between Lines
+    - Grouping of Code
+    - **Code should be readable like an essay – top to bottom without too many “jumps”**
+      - Consider splitting files with multiple concepts (e.g. classes) into multiple files
+      - Different concepts (“areas”) should be separated by spacing
+      - Similar concepts (“areas”) should not be separated by spacing
+      - Related concepts should be kept close to each other
+  - **Horizontal Formatting**
+    - Indentation
+    - Space between Code
+    - Line Width
+    - Lines of code should be readable without scrolling – avoid very long “sentences”
+      - Use indentation – even if not required technically
+      - Break long statements into multiple shorter ones
+      - Use clear but not unreadable long names
+  - Formatting is important and greatly improves readability
+  - Formatting rules differ between languages
+  - Follow language-specific conventions and guidelines
 
 &nbsp;
 
